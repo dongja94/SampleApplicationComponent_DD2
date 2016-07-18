@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 public class OtherActivity extends AppCompatActivity {
 
+    public static final String EXTRA_MY_DATA = "mydata";
     TextView messageView;
     EditText inputResultView;
 
@@ -26,8 +27,12 @@ public class OtherActivity extends AppCompatActivity {
         inputResultView = (EditText)findViewById(R.id.edit_input_result);
 
         Intent intent = getIntent();
-        String text = intent.getStringExtra(EXTRA_KEYWORD);
-        int age = intent.getIntExtra(EXTRA_AGE, 0);
+        MyData data = (MyData)intent.getParcelableExtra(EXTRA_MY_DATA);
+//        String text = intent.getStringExtra(EXTRA_KEYWORD);
+//        int age = intent.getIntExtra(EXTRA_AGE, 0);
+        String text = data.keyword;
+        int age = data.age;
+
         messageView.setText(text + ", age : " + age);
         Button btn = (Button)findViewById(R.id.btn_finish);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -41,4 +46,5 @@ public class OtherActivity extends AppCompatActivity {
             }
         });
     }
+
 }
