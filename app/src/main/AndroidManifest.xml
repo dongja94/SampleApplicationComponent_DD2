@@ -22,7 +22,12 @@
             android:label="@string/other_name" />
         <activity android:name=".FragmentInActivity" />
         <activity android:name=".OtherFragmentActivity" />
-        <activity android:name=".BackStackActivity"></activity>
+        <activity android:name=".BackStackActivity" />
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="false"></service>
     </application>
 
 </manifest>
