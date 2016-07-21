@@ -21,7 +21,8 @@
             android:name=".OtherActivity"
             android:label="@string/other_name" />
         <activity android:name=".FragmentInActivity" />
-        <activity android:name=".OtherFragmentActivity"></activity>
+        <activity android:name=".OtherFragmentActivity" />
+        <activity android:name=".BackStackActivity"></activity>
     </application>
 
 </manifest>
