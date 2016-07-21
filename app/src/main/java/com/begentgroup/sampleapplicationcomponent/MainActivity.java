@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MyService.class);
+                intent.putExtra("count", 100);
                 startService(intent);
             }
         });
