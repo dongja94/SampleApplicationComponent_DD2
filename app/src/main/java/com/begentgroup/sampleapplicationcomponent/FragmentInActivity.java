@@ -1,13 +1,16 @@
 package com.begentgroup.sampleapplicationcomponent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class FragmentInActivity extends AppCompatActivity {
+public class FragmentInActivity extends AppCompatActivity
+        implements OneFragment.OnMessageCallback{
 
     private static final String TAG_ONE = "one";
     private static final String TAG_TWO = "two";
@@ -48,5 +51,18 @@ public class FragmentInActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btn = (Button)findViewById(R.id.btn_other);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FragmentInActivity.this, OtherFragmentActivity.class));
+            }
+        });
+    }
+
+
+    public void displayMessage(String message) {
+        Toast.makeText(this, "message : " + message, Toast.LENGTH_SHORT).show();
     }
 }

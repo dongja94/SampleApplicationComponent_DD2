@@ -20,7 +20,8 @@
         <activity
             android:name=".OtherActivity"
             android:label="@string/other_name" />
-        <activity android:name=".FragmentInActivity"></activity>
+        <activity android:name=".FragmentInActivity" />
+        <activity android:name=".OtherFragmentActivity"></activity>
     </application>
 
 </manifest>

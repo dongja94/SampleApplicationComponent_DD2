@@ -1,6 +1,7 @@
 package com.begentgroup.sampleapplicationcomponent;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,8 +28,22 @@ public class OneFragment extends Fragment {
 
     public static final String KEY_INPUT = "input";
 
+    public interface OnMessageCallback {
+        public void displayMessage(String message);
+    }
+
+    OnMessageCallback callback;
+
     public OneFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnMessageCallback) {
+            callback = (OnMessageCallback)context;
+        }
     }
 
     String inputText;
@@ -56,6 +71,10 @@ public class OneFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 messageView.setText(inputView.getText().toString());
+//                ((FragmentInActivity)getActivity()).displayMessage(inputView.getText().toString());
+                if (callback != null) {
+                    callback.displayMessage(inputView.getText().toString());
+                }
             }
         });
         return view;
