@@ -1,12 +1,16 @@
 package com.begentgroup.sampleapplicationcomponent;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 public class FragmentInActivity extends AppCompatActivity {
+
+    private static final String TAG_ONE = "one";
+    private static final String TAG_TWO = "two";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +21,15 @@ public class FragmentInActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction ft = getSupportFragmentManager()
-                        .beginTransaction();
-                OneFragment f = new OneFragment();
-                ft.replace(R.id.container, f);
-                ft.commit();
+                Fragment old = getSupportFragmentManager()
+                        .findFragmentByTag(TAG_ONE);
+                if (old == null) {
+                    FragmentTransaction ft = getSupportFragmentManager()
+                            .beginTransaction();
+                    OneFragment f = OneFragment.newInstance("input message");
+                    ft.replace(R.id.container, f, TAG_ONE);
+                    ft.commit();
+                }
             }
         });
 
@@ -29,11 +37,15 @@ public class FragmentInActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction ft = getSupportFragmentManager()
-                        .beginTransaction();
-                TwoFragment f = new TwoFragment();
-                ft.replace(R.id.container, f);
-                ft.commit();
+                Fragment old = getSupportFragmentManager()
+                        .findFragmentByTag(TAG_TWO);
+                if (old == null) {
+                    FragmentTransaction ft = getSupportFragmentManager()
+                            .beginTransaction();
+                    TwoFragment f = new TwoFragment();
+                    ft.replace(R.id.container, f, TAG_TWO);
+                    ft.commit();
+                }
             }
         });
     }
