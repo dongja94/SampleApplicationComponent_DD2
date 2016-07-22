@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.begentgroup.sampleapplicationcomponent">
 
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -39,6 +39,9 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".StyleActivity"
+            android:theme="@style/AppTheme.Trans"></activity>
     </application>
 
 </manifest>
