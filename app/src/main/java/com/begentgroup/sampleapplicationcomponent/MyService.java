@@ -1,5 +1,6 @@
 package com.begentgroup.sampleapplicationcomponent;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 public class MyService extends Service {
     public MyService() {
     }
+
+    public static final String ACTION_MOD_TEN_ZERO = "com.begentgroup.sampleapplicationcomponent.action.MOD_TEN_ZERO";
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -37,6 +40,20 @@ public class MyService extends Service {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                    }
+                    if (count % 10 == 0) {
+                        Intent intent = new Intent(ACTION_MOD_TEN_ZERO);
+                        intent.putExtra("count", count);
+//                        sendBroadcast(intent);
+                        sendOrderedBroadcast(intent, null, new BroadcastReceiver() {
+                            @Override
+                            public void onReceive(Context context, Intent intent) {
+                                int code = getResultCode();
+                                if (code == Activity.RESULT_CANCELED) {
+                                    Toast.makeText(context, "activity not processed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, null, Activity.RESULT_CANCELED, null, null);
                     }
                 }
             }
