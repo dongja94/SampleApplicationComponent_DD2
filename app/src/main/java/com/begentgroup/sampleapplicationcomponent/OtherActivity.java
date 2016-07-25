@@ -43,6 +43,7 @@ public class OtherActivity extends AppCompatActivity {
                 intent.putExtra(RESULT_MESSAGE, result);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
+                overridePendingTransition(R.anim.slide_left_in, R.anim.slide_right_out);
             }
         });
     }

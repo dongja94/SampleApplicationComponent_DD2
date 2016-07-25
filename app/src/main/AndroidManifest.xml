@@ -40,8 +40,10 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".StyleActivity"
-            android:theme="@style/AppTheme.Trans"></activity>
+        <activity
+            android:name=".StyleActivity"
+            android:theme="@style/AppTheme.Trans" />
+        <activity android:name=".ButterKnifeActivity"></activity>
     </application>
 
 </manifest>
