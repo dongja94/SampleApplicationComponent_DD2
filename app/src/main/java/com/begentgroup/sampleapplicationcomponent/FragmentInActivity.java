@@ -30,6 +30,7 @@ public class FragmentInActivity extends AppCompatActivity
                     FragmentTransaction ft = getSupportFragmentManager()
                             .beginTransaction();
                     OneFragment f = OneFragment.newInstance("input message");
+                    ft.setCustomAnimations(R.anim.slide_left_in, R.anim.set1);
                     ft.replace(R.id.container, f, TAG_ONE);
                     ft.commit();
                 }
@@ -46,6 +47,7 @@ public class FragmentInActivity extends AppCompatActivity
                     FragmentTransaction ft = getSupportFragmentManager()
                             .beginTransaction();
                     TwoFragment f = new TwoFragment();
+                    ft.setCustomAnimations(R.anim.slide_right_in, R.anim.set1);
                     ft.replace(R.id.container, f, TAG_TWO);
                     ft.commit();
                 }

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -40,8 +42,11 @@ public class MainActivity extends AppCompatActivity {
 //                intent.putExtra(OtherActivity.EXTRA_AGE, 42);
 
 //                startActivity(intent);
-                startActivityForResult(intent, RC_OTHER);
-                overridePendingTransition(R.anim.slide_right_in, R.anim.slide_left_out);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeCustomAnimation(MainActivity.this, R.anim.slide_right_in, R.anim.slide_left_out);
+
+//                startActivityForResult(intent, RC_OTHER);
+                ActivityCompat.startActivityForResult(MainActivity.this, intent, RC_OTHER, options.toBundle());
+//                overridePendingTransition(R.anim.slide_right_in, R.anim.slide_left_out);
             }
         });
 
